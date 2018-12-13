@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<script>
+
+    var x = 'PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ufhiwh nkeldhaxfiubwd'
+
+    var SliceText = function (text, tam, br) {
+        var re = new RegExp('.{1,' + tam + '}', "g");
+        var arr = text.match(re);
+        var tamx = arr.length;
+        var htmlC = '';
+        for (var i = 0; i < tamx; i++) {
+            if (arr[i + 1] && arr[i + 1].charAt(0) === ' ') {
+                htmlC = htmlC + '<p align="justify">' + arr[i] + '</p>';
+            } else if (arr[i + 1] && arr[i + 1].charAt(0) !== ' ') {
+                if (arr[i].charAt(arr[i].length - 1).toLowerCase() === 'a' || arr[i].charAt(arr[i].length - 1).toLowerCase() === 'e' || arr[i].charAt(arr[i].length - 1).toLowerCase() === 'i' || arr[i].charAt(arr[i].length - 1).toLowerCase() === 'o' || arr[i].charAt(arr[i].length - 1).toLowerCase() === 'u') {
+                    htmlC = htmlC + '<p align="justify">' + arr[i] + '-' + '</p>';
+                } else {
+                    htmlC = htmlC + '<p align="justify">' + arr[i] + '' + '</p>';
+                }
+            } else {
+                htmlC = htmlC + '<p align="justify">' + arr[i] + '</p>';
+            }
+
+            if (br) {
+                htmlC = htmlC + '<br>';
+            }
+        }
+        return htmlC;
+    };
+    document.write(SliceText(x, 30));
+</script>
+</body>
+</html>
